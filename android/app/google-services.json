@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "560265022470",
+    "project_id": "gro-shop-eea14",
+    "storage_bucket": "gro-shop-eea14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560265022470:android:7154b0b48563d0759fc787",
+        "android_client_info": {
+          "package_name": "com.flutter.groshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560265022470-1gsuimba2u01bf0ckhpg88o02rvoit46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp4gIU7hbBTGKd3KikhyLJh_0Wx7CYz-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560265022470-1gsuimba2u01bf0ckhpg88o02rvoit46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
