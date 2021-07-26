@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:groshop/Pages/Splash/splash.dart';
 
 import 'Auth/login_navigator.dart';
 import 'Locale/locales.dart';
@@ -45,8 +46,8 @@ class GroShop extends StatelessWidget {
             ],
             locale: locale,
             theme: appTheme,
-            home: SignInNavigator(),
-            routes: PageRoutes().routes(),
+            home: Splash(),
+            // routes: PageRoutes().routes(),
           );
         },
       ),

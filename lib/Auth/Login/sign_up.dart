@@ -25,6 +25,8 @@ class _SignUpState extends State<SignUp> {
 
   firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
 
+  bool circular = false;
+
   Future<bool> loginUser(String phone, BuildContext context) async {
     print("LoginUer Functiion");
     FirebaseAuth _auth = FirebaseAuth.instance;
@@ -173,37 +175,37 @@ class _SignUpState extends State<SignUp> {
             Spacer(
               flex: 5,
             ),
-            CustomButton(onTap: () async {
-              // final phone = _numberController.text.trim();
+            CustomButton(
+                circular: circular,
+                onTap: () async {
+                  // final phone = _numberController.text.trim();
 
-              // loginUser(phone, context);
-              try {
-                firebase_auth.UserCredential userCredential =
-                    await firebaseAuth.createUserWithEmailAndPassword(
-                        email: _emailController.text,
-                        password: _passworddController.text);
-                print(userCredential.user.email);
+                  // loginUser(phone, context);
+                  setState(() {
+                    circular = true;
+                  });
+                  try {
+                    firebase_auth.UserCredential userCredential =
+                        await firebaseAuth.createUserWithEmailAndPassword(
+                            email: _emailController.text,
+                            password: _passworddController.text);
+                    print(userCredential.user.email);
 
-                // setState(() {
-                //   circular = false;
-                // });
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (builder) => SignIn()),
-                    (route) => false);
-              } catch (e) {
-                // final snackbar = SnackBar(content: Text(e.toString()));
-                ScaffoldMessenger.of(context).showSnackBar(e);
-                // fToast.showToast(
-                //   child: toastFail,
-                //   gravity: ToastGravity.BOTTOM,
-                //   toastDuration: Duration(seconds: 2),
-                // );
-                // setState(() {
-                //   circular = false;
-                // });
-              }
-            })
+                    setState(() {
+                      circular = false;
+                    });
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (builder) => SignIn()),
+                        (route) => false);
+                  } catch (e) {
+                    // final snackbar = SnackBar(content: Text(e.toString()));
+                    ScaffoldMessenger.of(context).showSnackBar(e);
+                    // setState(() {
+                    //   circular = false;
+                    // });
+                  }
+                })
           ],
         ),
         beginOffset: Offset(0, 0.3),

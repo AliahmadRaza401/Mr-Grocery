@@ -10,6 +10,7 @@ class CustomButton extends StatefulWidget {
   final double height;
   final Function onTap;
   final Color color;
+  bool circular = false;
 
   CustomButton({
     this.label,
@@ -20,6 +21,7 @@ class CustomButton extends StatefulWidget {
     this.height,
     this.onTap,
     this.color,
+    this.circular
   });
 
   @override
@@ -46,15 +48,19 @@ class _CustomButtonState extends State<CustomButton> {
           children: [
             widget.prefixIcon != null ? widget.prefixIcon : SizedBox.shrink(),
             SizedBox(width: widget.iconGap),
-            Text(
-              widget.label ?? locale.continueText,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w700),
-            ),
+            widget.circular == true
+                ? CircularProgressIndicator(
+                    color: Colors.white,
+                  )
+                : Text(
+                    widget.label ?? locale.continueText,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        letterSpacing: 1,
+                        fontWeight: FontWeight.w700),
+                  ),
           ],
         ),
       ),

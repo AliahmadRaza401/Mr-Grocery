@@ -21,7 +21,7 @@ dependencies:
   flutter_bloc: ^6.0.1
   grouped_buttons: ^1.0.4
   carousel_slider: ^2.2.1
-
+  delayed_display: ^2.0.0
   animation_wrappers: ^0.0.1
   firebase_auth: ^3.0.1
   firebase_core: ^1.4.0
@@ -36,10 +36,10 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.7.5
 
-flutter_icons:
-  android: "ic_launcher"
-  ios: true
-  image_path: "assets/icon.png"
+# flutter_icons:
+#   android: "ic_launcher"
+#   ios: true
+#   image_path: "assets/icon.png"
 
 flutter:
   uses-material-design: true

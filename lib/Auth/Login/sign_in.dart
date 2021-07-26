@@ -2,6 +2,7 @@ import 'package:animation_wrappers/Animations/faded_slide_animation.dart';
 // import 'package:animation_wrappers/Animations/faded_translation_animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:groshop/Auth/Login/sign_up.dart';
 import 'package:groshop/Auth/login_navigator.dart';
 import 'package:groshop/Components/custom_button.dart';
 import 'package:groshop/Components/entry_field.dart';
@@ -18,6 +19,7 @@ class _SignInState extends State<SignIn> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
+  bool circular = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +42,8 @@ class _SignInState extends State<SignIn> {
                 ),
                 Image.asset(
                   "assets/logo.jpeg",
-                  scale: 2.5,
-                  height: 150,
+                  // scale: 2.5,
+                  height: 200,
                 ),
                 Spacer(
                   flex: 4,
@@ -57,20 +59,21 @@ class _SignInState extends State<SignIn> {
                 ),
                 Spacer(),
                 CustomButton(
+                    circular: circular,
                     label: "SignIn",
                     onTap: () async {
-                      //             setState(() {
-                      //   circular = true;
-                      // });
+                      setState(() {
+                        circular = true;
+                      });
                       try {
                         firebase_auth.UserCredential userCredential =
                             await firebaseAuth.signInWithEmailAndPassword(
                                 email: _emailController.text,
                                 password: _passwordController.text);
                         print(userCredential.user.email);
-                        // setState(() {
-                        //   circular = false;
-                        // });
+                        setState(() {
+                          circular = false;
+                        });
 
                         Navigator.pushAndRemoveUntil(
                             context,
@@ -100,7 +103,8 @@ class _SignInState extends State<SignIn> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, SignInRoutes.signUp);
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => SignUp()));
                       },
                       child: Text(
                         "  SignUp",
@@ -112,32 +116,32 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
                 Spacer(
-                  flex: 2,
+                  flex: 4,
                 ),
-                Text(
-                  locale.orContinueWith,
-                  textAlign: TextAlign.center,
-                ),
-                Spacer(
-                  flex: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: CustomButton(
-                        label: 'Facebook',
-                        color: Color(0xff3b45c1),
-                      ),
-                    ),
-                    Expanded(
-                      child: CustomButton(
-                        label: 'Google',
-                        color: Color(0xffff452c),
-                      ),
-                    ),
-                  ],
-                ),
+                // Text(
+                //   locale.orContinueWith,
+                //   textAlign: TextAlign.center,
+                // ),
+                // Spacer(
+                //   flex: 1,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Expanded(
+                //       child: CustomButton(
+                //         label: 'Facebook',
+                //         color: Color(0xff3b45c1),
+                //       ),
+                //     ),
+                //     Expanded(
+                //       child: CustomButton(
+                //         label: 'Google',
+                //         color: Color(0xffff452c),
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),
